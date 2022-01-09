@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- navigacija -->
     <div id="nav">
       <nav class="navbar navbar-expand-lg navbar-light pozadina">
         <a
@@ -24,35 +25,32 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item-custom nav-item active">
-              <a class="nav-link text-light text1" href="#"
-                >Home <span class="sr-only">(current)</span></a
+              <router-link to="/home" class="nav-link text-light text1" href="#"
+                >Home <span class="sr-only">(current)</span></router-link
               >
             </li>
-            <div class="nav-item-custom btn-group">
-              <button type="button" class="btn text-light text2">Sport</button>
-              <button
-                type="button"
-                class="btn arrow-position dropdown-toggle dropdown-toggle-split"
-                id="dropdownMenuReference"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                data-reference="parent"
-              >
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <div
-                class="submenu dropdown-menu"
-                aria-labelledby="dropdownMenuReference"
-              >
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              </div>
-            </div>
+            <li class="nav-item-custom nav-item nav-link text-light text1">
+              <router-link to="/sport">
+                <div class="btn-group">
+                  <button type="button" class="btn">Sport</button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Football</a>
+                    <a class="dropdown-item" href="#">Basketball </a>
+                    <a class="dropdown-item" href="#">Tennis</a>
+                    <a class="dropdown-item" href="#">Fishing</a>
+                  </div>
+                </div>
+              </router-link>
+            </li>
             <li class="nav-item-custom nav-item">
               <a class="nav-link text-light text1" href="#">Events</a>
             </li>
@@ -108,10 +106,12 @@ navbar-center {
 .text1 {
   font-size: 25px;
   margin-top: 5px;
+  margin-left: 100px;
 }
 .text2 {
   font-size: 25px;
-  margin-top: 0px;
+  margin-top: 5px;
+  margin-left: 100px;
 }
 .arrow-position {
   margin-top: 5px;
