@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-flex">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-4 kategorije">
           <h1>Categories</h1>
@@ -13,46 +13,64 @@
           </p>
         </div>
         <div class="col-5">
-          <!-- forma -->
-          <div class="forma">
-            <form>
+          <div class="okvir space">
+            <h1>Submit your request now</h1>
+            <!-- forma -->
+            <form class="forma2">
+              <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row">
-                <div class="col">
+                <div class="okvir1 col-4 form-outline">
+                  <label class="form-label margin1" for="sport">Sport</label>
                   <input
                     type="text"
-                    class="form-control bar2"
-                    placeholder="First name"
+                    id="sport"
+                    class="inc margin1 form-control"
                   />
+
+                  <label class="form-label margin1" for="location"
+                    >Location</label
+                  >
                   <input
-                    type="text"
-                    class="form-control bar2"
-                    placeholder="First name"
+                    type="email"
+                    id="location"
+                    class="inc margin1 form-control"
                   />
+
+                  <label class="form-label margin1" for="date">Date</label>
                   <input
-                    type="text"
-                    class="form-control bar2"
-                    placeholder="First name"
+                    type="email"
+                    id="date"
+                    class="inc margin1 form-control"
                   />
+
+                  <label class="form-label margin1" for="players"
+                    >Players</label
+                  >
                   <input
-                    type="text"
-                    class="form-control bar2"
-                    placeholder="First name"
+                    type="email"
+                    id="players"
+                    class="inc margin1 form-control"
                   />
                 </div>
-                <div class="form-group">
-                  <label for="exampleFormControlTextarea1"
-                    >Example textarea</label
+
+                <div class="col-7 form-group">
+                  <label class="form-label margin1" for="information"
+                    >More information</label
                   >
                   <textarea
-                    class="form-control"
-                    id="exampleFormControlTextarea1"
-                    rows="3"
+                    class="inc margin1 form-control"
+                    id="information"
+                    rows="6"
                   ></textarea>
+
+                  <!-- Submit button -->
+                  <button type="submit" class="col-5 btn incb btn-block mb-4">
+                    Submit
+                  </button>
                 </div>
               </div>
             </form>
           </div>
-          <div class="col-1">sa</div>
         </div>
       </div>
     </div>
@@ -70,6 +88,7 @@
 }
 .kategorije {
   margin-top: 100px;
+  margin-left: 20px;
 }
 .kategorije h1 {
   color: white;
@@ -83,13 +102,31 @@
   font-family: "manrope" sans-serif;
   font-size: 20px;
 }
-.forma {
-  margin: solid;
-  background-color: yellow;
+.okvir h1 {
+  text-align: center;
+  font-family: "Roboto" sans-serif;
 }
-.bar2 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: blue;
+.okvir1 {
+  margin-bottom: 20px;
+}
+.okvir {
+  border: solid;
+  background-color: #ffffff;
+  border-radius: 50px;
+}
+.inc {
+  background-color: #d0d0d0;
+  border-radius: 30px;
+}
+.incb {
+  background-color: #5b69bf;
+  margin-top: 50px;
+}
+.form-label {
+  color: #707070;
+  font-family: "Roboto" sans-serif;
+}
+.margin1 {
+  margin-left: 20px;
 }
 </style>

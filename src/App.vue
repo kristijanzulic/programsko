@@ -95,7 +95,7 @@ navbar-center {
 }
 .log1 {
   border: 2px solid white;
-  border-radius: 15%;
+  border-radius: 15px;
   background-color: grey;
   width: 100px;
   height: 50px;
