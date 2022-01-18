@@ -9,8 +9,11 @@
             To Remember</H1
           >
           <p class="third">Play Anywhere Anytime</p>
+
           <router-link to="/sport"
-            ><button class="space button-17"><p>Search</p></button></router-link
+            ><button class="space button-17">
+              <p>Search</p>
+            </button></router-link
           >
         </div>
         <div class="col-md"></div>
@@ -21,31 +24,34 @@
               <h1>New to Sportario?</h1>
               <p>Sign up now to ger your own personilized timeline!</p>
               <div class="form-group">
-                <label for="exampleInputEmail1"></label>
+                <label for="email"></label>
                 <input
                   type="email"
+                  v-model="email"
                   class="form-control"
-                  id="exampleInputEmail1"
+                  id="email"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
                 />
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1"></label>
+                <label for="username"></label>
                 <input
                   type="text"
+                  v-model="username"
                   class="form-control"
-                  id="exampleInputEmail1"
+                  id="username"
                   aria-describedby="emailHelp"
                   placeholder="Username"
                 />
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1"></label>
+                <label for="password"></label>
                 <input
                   type="password"
+                  v-model="password"
                   class="form-control"
-                  id="exampleInputPassword1"
+                  id="password"
                   placeholder="Password"
                 />
               </div>
@@ -63,7 +69,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scoped>
 .bg-img {
   top: 0;
   left: 0;
@@ -196,4 +202,22 @@
 }
 </style>
 
-<script></script>
+<script>
+// import firebase from "@/firebase";
+
+export default {
+  name: "signup",
+  data() {
+    return {
+      email: "",
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    signup() {
+      console.log(firebase);
+    },
+  },
+};
+</script>

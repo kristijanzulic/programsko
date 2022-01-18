@@ -13,7 +13,7 @@
           </p>
         </div>
         <div class="col-5">
-          <div class="okvir space">
+          <div class="okvir">
             <h1>Submit your request now</h1>
             <!-- forma -->
             <form class="forma2">
@@ -78,7 +78,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scoped>
 .bg-img {
   top: 0;
   left: 0;
@@ -113,6 +113,7 @@
   border: solid;
   background-color: #ffffff;
   border-radius: 50px;
+  margin-top: 50px;
 }
 .inc {
   background-color: #d0d0d0;
@@ -121,6 +122,7 @@
 .incb {
   background-color: #5b69bf;
   margin-top: 50px;
+  margin-left: 100px;
 }
 .form-label {
   color: #707070;

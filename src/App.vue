@@ -54,9 +54,11 @@
             <li class="nav-item-custom nav-item">
               <a class="nav-link text-light text1" href="#">Events</a>
             </li>
-            <li class="nav-item-custom nav-item">
-              <a class="nav-link text-light text1 log1" href="#">Log in</a>
-            </li>
+            <router-link to="/login"
+              ><li class="nav-item-custom nav-item">
+                <a class="nav-link text-light text1 log1" href="#">Log in</a>
+              </li></router-link
+            >
           </ul>
         </div>
       </nav>
@@ -65,7 +67,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scoped>
 .pozadina {
   background-color: black;
 }
