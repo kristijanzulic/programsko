@@ -56,7 +56,11 @@
                 />
               </div>
 
-              <button type="submit" class="btn2 2btn btn-light text-dark">
+              <button
+                type="button"
+                @click="signup"
+                class="btn2 2btn btn-light text-dark"
+              >
                 Register
               </button>
             </form>
@@ -203,7 +207,7 @@
 </style>
 
 <script>
-// import firebase from "@/firebase";
+import { firebase } from "@/firebase";
 
 export default {
   name: "signup",
@@ -216,7 +220,15 @@ export default {
   },
   methods: {
     signup() {
-      console.log(firebase);
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.username, this.password);
+      then(function () {
+        console.log("Uspješna registracija");
+      }).catch(function (error) {
+        comsole.error("Došlo je do greške", error);
+      });
+      console.log("Nastavak");
     },
   },
 };
