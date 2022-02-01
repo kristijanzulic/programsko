@@ -222,12 +222,13 @@ export default {
     signup() {
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.username, this.password);
-      then(function () {
-        console.log("Uspješna registracija");
-      }).catch(function (error) {
-        comsole.error("Došlo je do greške", error);
-      });
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(function () {
+          console.log("Uspješna registracija");
+        })
+        .catch(function (error) {
+          console.error("Došlo je do greške", error);
+        });
       console.log("Nastavak");
     },
   },

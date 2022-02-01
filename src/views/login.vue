@@ -1,172 +1,136 @@
 <template>
   <div>
-    <div class="loginBox">
-      <img
-        class="user"
-        src="https://i.ibb.co/yVGxFPR/2.png"
-        height="100px"
-        width="100px"
-      />
-      <h3>Sign in here</h3>
-      <form action="login.php" method="post">
-        <div class="inputBox">
-          <input
-            id="uname"
-            type="text"
-            name="Username"
-            placeholder="Username"
-          />
-          <input
-            id="pass"
-            type="password"
-            name="Password"
-            placeholder="Password"
-          />
+    <div class="container">
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <div class="forma">
+            <form>
+              <img class="pic" src="@/assets/logo_pravi.png" alt="" />
+              <div class="form-group">
+                <input
+                  type="email"
+                  v-model="email"
+                  class="form-control bojainput"
+                  id="email"
+                  aria-describedby="emailHelp"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  v-model="password"
+                  class="form-control bojainput"
+                  id="password"
+                  placeholder="Lozinka"
+                />
+              </div>
+              <div class="form-group form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label class="form-check-label bojabox" for="exampleCheck1"
+                  >Zapamti me</label
+                >
+              </div>
+              <button type="button" @click="login" class="tipka btn">
+                Prijava
+              </button>
+              <p class="zab">Zaboravio si lozinku?</p>
+            </form>
+          </div>
         </div>
-        <input type="submit" name="" value="Login" />
-      </form>
-      <a href="#">Forget Password<br /> </a>
-      <div class="text-center">
-        <router-link to="/home">
-          <p style="color: #59238f">Sign-Up</p></router-link
-        >
+        <div class="col-4"></div>
       </div>
     </div>
+
     <img src="@/assets/backround.jpg" alt="" class="bg-img" />
   </div>
 </template>
 
 <script>
+import { firebase } from "@/firebase";
+
 export default {
+  name: "login",
   data() {
-    return {};
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    login() {
+      console.log("login..." + this.email);
+
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then((result) => {
+          console.log("Uspješna prijava", result);
+          this.$router.replace({ name: "Home" });
+        })
+        .catch(function (e) {
+          console.error("Greška", e);
+        });
+    },
   },
 };
 </script>
 
-<style scoped>
+<style scooped>
 .bg-img {
   top: 0;
   left: 0;
   width: 1920px;
   position: fixed;
   z-index: -1;
+  filter: brightness(70%);
 }
-/* body {
-  margin: 0;
-  padding: 0;
-  background: url(https://i.ibb.co/VQmtgjh/6845078.png) no-repeat;
-  height: 100vh;
-  font-family: sans-serif;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow: hidden;
-} */
-
-@media screen and (max-width: 600px;) {
-  body {
-    background-size: cover;
-    :fixed ;
-  }
-}
-
-#particles-js {
-  height: 100%;
-}
-
-.loginBox {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.forma {
+  border-style: solid;
+  border-color: #adadad;
   width: 350px;
-  min-height: 200px;
-  background: #000000;
-  border-radius: 10px;
-  padding: 40px;
-  box-sizing: border-box;
-}
-
-.user {
-  margin: 0 auto;
   display: block;
-  margin-bottom: 20px;
-}
-
-h3 {
-  margin: 0;
-  padding: 0 0 20px;
-  color: #59238f;
-  text-align: center;
-}
-
-.loginBox input {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.loginBox input[type="text"],
-.loginBox input[type="password"] {
-  border: none;
-  border-bottom: 2px solid #262626;
-  outline: none;
-  height: 40px;
-  color: #fff;
-  background: transparent;
-  font-size: 16px;
-  padding-left: 20px;
-  box-sizing: border-box;
-}
-
-.loginBox input[type="text"]:hover,
-.loginBox input[type="password"]:hover {
-  color: #42f3fa;
-  border: 1px solid #42f3fa;
-  box-shadow: 0 0 5px rgba(0, 255, 0, 0.3), 0 0 10px rgba(0, 255, 0, 0.2),
-    0 0 15px rgba(0, 255, 0, 0.1), 0 2px 0 black;
-}
-
-.loginBox input[type="text"]:focus,
-.loginBox input[type="password"]:focus {
-  border-bottom: 2px solid #42f3fa;
-}
-
-.inputBox {
-  position: relative;
-}
-
-.inputBox span {
-  position: absolute;
-  top: 10px;
-  color: #262626;
-}
-
-.loginBox input[type="submit"] {
-  border: none;
-  outline: none;
-  height: 40px;
-  font-size: 16px;
-  background: #59238f;
-  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50%;
   border-radius: 20px;
-  cursor: pointer;
+  background-color: #000000;
+  padding: 20px;
 }
-
-.loginBox a {
-  color: #262626;
-  font-size: 14px;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
+.bojabox {
+  color: #adadad;
+}
+.bojainput {
+  background: #000000;
+  border-style: solid;
+  border-color: #adadad;
+}
+.tipka {
+  border-radius: 50px;
+  margin: auto;
+  width: 100%;
+  font-size: 18px;
+  background-color: #adadad;
+}
+.space {
+  margin-top: 20%;
+}
+.pic {
+  width: 60px;
+  height: 60px;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
 }
-
-a:hover {
-  color: #00ffff;
-}
-
-p {
-  color: #0000ff;
+.zab {
+  color: #adadad;
+  margin-left: 50%;
+  margin-top: 50px;
 }
 </style>

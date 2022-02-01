@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item-custom nav-item active">
-              <router-link to="/home" class="nav-link text-light text1" href="#"
+              <router-link to="/" class="nav-link text-light text1" href="#"
                 >Home <span class="sr-only">(current)</span></router-link
               >
             </li>
@@ -54,11 +54,19 @@
             <li class="nav-item-custom nav-item">
               <a class="nav-link text-light text1" href="#">Events</a>
             </li>
-            <router-link to="/login"
-              ><li class="nav-item-custom nav-item">
+            <li v-if="!store.currentUser" class="nav-item-custom nav-item">
+              <router-link to="/login">
                 <a class="nav-link text-light text1 log1" href="#">Log in</a>
-              </li></router-link
-            >
+              </router-link>
+            </li>
+            <li v-if="store.currentUser" class="nav-item-custom nav-item">
+              <a
+                class="nav-link text-light text1"
+                href="#"
+                @click.prevent="logout()"
+                >logout</a
+              >
+            </li>
           </ul>
         </div>
       </nav>
@@ -66,6 +74,39 @@
     <router-view />
   </div>
 </template>
+<script>
+import { firebase } from "@/firebase";
+import store from "@/store";
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in.
+    console.log("***", user.email);
+    store.currentUser = user.email;
+  } else {
+    console.log("No user");
+    store.currentUser = null;
+  }
+});
+export default {
+  name: "app",
+  data() {
+    return {
+      store,
+    };
+  },
+  methods: {
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push({ name: "login" });
+        });
+    },
+  },
+};
+</script>
 
 <style scoped>
 .pozadina {
